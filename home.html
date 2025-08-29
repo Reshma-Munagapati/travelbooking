@@ -1,0 +1,20 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+<h1>Welcome — Register or Login</h1>
+
+<h2>Register</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ r_form.as_p }}
+  <button type="submit" name="register">Register</button>
+</form>
+
+<hr>
+
+<h2>Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ l_form.as_p }}
+  <button type="submit" name="login">Login</button>
+</form>
+{% endblock %}

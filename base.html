@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Travel Booking</title></head>
+<body>
+  <p>
+    {% if request.user.is_authenticated %}
+      Hello, {{ request.user.username }} |
+      <a href="{% url 'travel_list' %}">Travel Options</a> |
+      <a href="{% url 'my_bookings' %}">My Bookings</a> |
+      <a href="{% url 'profile' %}">Profile</a> |
+      <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+      <a href="{% url 'home' %}">Home</a>
+    {% endif %}
+  </p>
+  <hr>
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% block content %}{% endblock %}
+</body>
+</html>
